@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Next.js Build Output
+.next/
+**/.next/
+out/
+**/out/
+
+# TypeScript / Express Build Output
+dist/
+**/dist/
+build/
+**/build/
+
+# Environment Variables & Secrets
+.env
+.env.*
+!.env.example
+
+# Logs & Temporary Files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.DS_Store
+Thumbs.db
+coverage/
+
+# IDE / Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
