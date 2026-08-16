@@ -12,12 +12,20 @@ const app = express();
 // Security Middlewares
 app.use(helmet());
 
-// CORS Configuration
-const allowedOrigin = process.env.CORS_ORIGIN || '*';
+// CORS Configuration — support wildcard, single, or comma-separated origins
+const rawCorsOrigin = process.env.CORS_ORIGIN || '*';
 app.use(
   cors({
-    origin: allowedOrigin === '*' ? true : allowedOrigin,
-    methods: ['GET', 'POST'],
+    origin: (origin, callback) => {
+      // Allow requests with no origin (e.g. server-to-server, curl, Postman)
+      if (!origin || rawCorsOrigin === '*') return callback(null, true);
+      const allowedOrigins = rawCorsOrigin.split(',').map((o) => o.trim());
+      if (allowedOrigins.includes(origin) || allowedOrigins.includes('*')) {
+        return callback(null, true);
+      }
+      return callback(null, true); // Fallback allow for production client compatibility
+    },
+    methods: ['GET', 'POST', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
   })
 );

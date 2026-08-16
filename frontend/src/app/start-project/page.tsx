@@ -92,8 +92,8 @@ export default function StartProject() {
       return;
     }
 
-    setLoading(true);
-    const backendUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+    const rawBackendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+    const backendUrl = rawBackendUrl.replace(/\/+$/, '').replace(/\/api$/, '');
 
     try {
       const response = await fetch(`${backendUrl}/api/enquiries`, {
