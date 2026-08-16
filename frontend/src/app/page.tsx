@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowRight, ArrowUpRight, Code, Cpu, Palette, LayoutDashboard, Terminal, CheckCircle2, Sparkles } from 'lucide-react';
+import AnimatedCounter from '@/components/AnimatedCounter';
 
 export default function Home() {
   const containerVariants = {
@@ -311,10 +312,10 @@ export default function Home() {
         >
           <div className="grid grid-cols-2 lg:grid-cols-4">
             {[
-              { value: '10+', label: 'Projects Delivered' },
-              { value: '5+', label: 'Business Solutions' },
-              { value: '100%', label: 'Client Focused' },
-              { value: '24/7', label: 'Communication Support' }
+              { numericValue: 10, suffix: '+', label: 'Projects Delivered' },
+              { numericValue: 5, suffix: '+', label: 'Business Solutions' },
+              { numericValue: 100, suffix: '%', label: 'Client Focused' },
+              { numericValue: 24, suffix: '/7', label: 'Communication Support' }
             ].map((stat, idx) => (
               <div
                 key={idx}
@@ -324,9 +325,12 @@ export default function Home() {
                   idx > 0 ? 'lg:border-l' : ''
                 }`}
               >
-                <span className="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-champagne tracking-tight">
-                  {stat.value}
-                </span>
+                <AnimatedCounter
+                  numericValue={stat.numericValue}
+                  suffix={stat.suffix}
+                  duration={1800}
+                  className="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-champagne tracking-tight"
+                />
                 <span className="text-xs sm:text-sm font-mono font-medium text-ivory/70 uppercase tracking-wider mt-2.5">
                   {stat.label}
                 </span>
