@@ -300,6 +300,42 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Company Stats / Trust Metrics Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-graphite/80" aria-label="Company Trust Metrics">
+        <motion.div 
+          className="bg-graphite/40 border border-graphite/80 rounded-xl overflow-hidden shadow-xl shadow-champagne/5"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-50px' }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div className="grid grid-cols-2 lg:grid-cols-4">
+            {[
+              { value: '10+', label: 'Projects Delivered' },
+              { value: '5+', label: 'Business Solutions' },
+              { value: '100%', label: 'Client Focused' },
+              { value: '24/7', label: 'Communication Support' }
+            ].map((stat, idx) => (
+              <div
+                key={idx}
+                className={`p-6 sm:p-8 md:p-10 text-center flex flex-col justify-center items-center border-graphite/60 ${
+                  idx % 2 === 0 ? 'border-r lg:border-r-0' : ''
+                } ${idx < 2 ? 'border-b lg:border-b-0' : ''} ${
+                  idx > 0 ? 'lg:border-l' : ''
+                }`}
+              >
+                <span className="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-champagne tracking-tight">
+                  {stat.value}
+                </span>
+                <span className="text-xs sm:text-sm font-mono font-medium text-ivory/70 uppercase tracking-wider mt-2.5">
+                  {stat.label}
+                </span>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      </section>
+
       {/* Our Process Section — Continuous Flowing / Spiral-Style Connector */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="text-center max-w-2xl mx-auto space-y-3 mb-16">
