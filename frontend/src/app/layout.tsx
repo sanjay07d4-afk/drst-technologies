@@ -22,6 +22,14 @@ export const metadata: Metadata = {
   description: 'Premium website development, customized AI automation workflows, and elegant brand identity design. Discover digital solutions for real transformation.',
   // Note: System must support changing domain later. We configure metadataBase dynamically or via a fallback:
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://drst-technologies.vercel.app'),
+  icons: {
+    icon: [
+      { url: '/icon.png', type: 'image/png' },
+      { url: '/favicon.ico', sizes: 'any' },
+    ],
+    shortcut: '/icon.png',
+    apple: '/icon.png',
+  },
   openGraph: {
     title: 'DRST Technologies | Digital Solutions. Real Transformation.',
     description: 'Engineering professional websites, automation solutions, and distinct brand identities. High-end conversion-focused tech solutions.',
